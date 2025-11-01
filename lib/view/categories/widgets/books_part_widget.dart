@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,56 +36,59 @@ class BooksPartWidget extends StatelessWidget {
               itemCount: books.length,
               itemBuilder: (context, index) {
                 final book = books[index];
-                return Container(
-                  color: Colors.white,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 160.h,
-                        width: 160.h,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16.r)),
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(16.r),
-                            child: MyNetworkImage(
-                              url: book.image,
-                              fit: BoxFit.cover,
-                            )),
-                      ),
-                      SizedBox(height: 8.h),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          book.title,
-                          maxLines: 1,
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              color: AppColor.primaryColor,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16.sp),
+                return FadeInUp(
+                  duration: const Duration(milliseconds: 900),
+                  delay: Duration(milliseconds: (index * 150) % 1000),
+                  // from: (index * 70) + 70,
+                  child: Container(
+                    color: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 160.h,
+                          width: 160.h,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16.r)),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16.r),
+                              child: MyNetworkImage(
+                                url: book.image,
+                                fit: BoxFit.cover,
+                              )),
                         ),
-                      ),
-                      SizedBox(height: 8.h),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "\$${book.price}",
-                          maxLines: 1,
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              color: AppColor.secondryColor,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14.sp),
+                        SizedBox(height: 8.h),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            book.title,
+                            maxLines: 1,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                                color: AppColor.primaryColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16.sp),
+                          ),
                         ),
-                      )
-                    ],
+                        SizedBox(height: 8.h),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "\$${book.price}",
+                            maxLines: 1,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                                color: AppColor.secondryColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14.sp),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ); //BookCard(book: book);
               },
             );
-          } else if (state is BooksErrorState) {
-            return Center(child: Text(state.message));
           }
           return const SizedBox();
         },

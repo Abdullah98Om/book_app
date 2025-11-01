@@ -45,6 +45,8 @@ dependencies:
   fpdart: ^1.1.1
   http:
   flutter_screenutil:
+  animate_do: ^3.3.4
+
  
 
 

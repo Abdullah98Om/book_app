@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +14,7 @@ class CategoriesPartWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: SizedBox(
-        height: 30.h,
+        height: 40.h,
         child: BlocBuilder<BooksCubit, BooksState>(
           buildWhen: (previous, current) =>
               current is CategoriesLoadedState || current is BooksLoadedState,
@@ -21,40 +22,48 @@ class CategoriesPartWidget extends StatelessWidget {
             final cubit = context.read<BooksCubit>();
             final categories = cubit.allCategories;
             if (categories.isEmpty) return const SizedBox();
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-              itemBuilder: (context, index) {
-                final category = categories[index];
-                final isSelected = cubit.selectedCategory == category.id;
-                return GestureDetector(
-                  onTap: () {
-                    cubit.selectCategory(category.id); // Cubit يقوم بالفلترة
-                  },
-                  child: Container(
-                    alignment: Alignment.bottomCenter,
-                    margin: EdgeInsets.only(right: 20.w),
-                    decoration: BoxDecoration(
-                        border: isSelected
-                            ? const Border(
-                                bottom: BorderSide(
-                                    width: 2, color: AppColor.secondryColor))
-                            : null),
-                    child: Text(
-                      category.name,
-                      style: TextStyle(
-                        color: isSelected
-                            ? AppColor.primaryColor
-                            : AppColor.greyColor,
-                        fontSize: isSelected ? 18.sp : 16.sp,
-                        fontWeight:
-                            isSelected ? FontWeight.w700 : FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            );
+            return categories.length > 1
+                ? ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      final category = categories[index];
+                      final isSelected = cubit.selectedCategory == category.id;
+                      return GestureDetector(
+                        onTap: () {
+                          cubit.selectCategory(
+                              category.id); // Cubit يقوم بالفلترة
+                        },
+                        child: FadeInRight(
+                          from: (index * 70) + 70,
+                          child: Container(
+                            alignment: Alignment.bottomCenter,
+                            margin: EdgeInsets.only(right: 20.w),
+                            decoration: BoxDecoration(
+                                border: isSelected
+                                    ? const Border(
+                                        bottom: BorderSide(
+                                            width: 2,
+                                            color: AppColor.secondryColor))
+                                    : null),
+                            child: Text(
+                              category.name,
+                              style: TextStyle(
+                                color: isSelected
+                                    ? AppColor.primaryColor
+                                    : AppColor.greyColor,
+                                fontSize: isSelected ? 18.sp : 16.sp,
+                                fontWeight: isSelected
+                                    ? FontWeight.w700
+                                    : FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  )
+                : const SizedBox.shrink();
           },
         ),
       ),
