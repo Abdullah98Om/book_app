@@ -1,16 +1,51 @@
-# book_app
+# 📚 Book App
 
-A new Flutter project.
+تطبيق **Book App** هو تطبيق مخصص لاستعراض الكتب حسب الأقسام، مع إمكانية البحث عن الكتب وتخزين آخر 10 عمليات بحث في قاعدة بيانات محلية **SQLite**.  
+يهدف التطبيق إلى تسهيل تصفح الكتب والوصول السريع إليها بطريقة منظمة وسهلة الاستخدام.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ المميزات
 
-A few resources to get you started if this is your first Flutter project:
+- 🔹 عرض الأقسام بشكل أفقي وسلس.
+- 🔹 تصفية الكتب حسب القسم المحدد.
+- 🔹 البحث عن الكتب داخليًا.
+- 🔹 حفظ آخر 10 عمليات بحث باستخدام SQLite.
+- 🔹 واجهة حديثة ومتجاوبة تدعم مختلف الشاشات.
+- 🔹 استخدام **Cubit + Bloc** لإدارة الحالة بكفاءة.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🧩 التقنيات المستخدمة
+
+- **Flutter** (UI Framework)
+- **Bloc/Cubit** (State Management)
+- **SQLite** (لتخزين عمليات البحث)
+- **Dio / HTTP** (لجلب البيانات من الـ API)
+- **GetIt** (Dependency Injection)
+- **ScreenUtil** (لتصميم واجهة متجاوبة)
+- **Flutter Bloc** (لإدارة الحالة بشكل منظم)
+
+---
+
+#### 📱 لقطات من التطبيق
+
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+
+  <div>
+    <p>الفئات</p>
+    <img src="screenshots/4.png" alt="الرئيسية" width="200"/>
+  </div>
+
+  <div>
+    <p>البحث</p>
+    <img src="screenshots/2.png" alt="الفئات" width="200"/>
+  </div>
+
+  <div>
+    <p>سجل البث</p>
+    <img src="screenshots/1.png" alt="البحث" width="200"/>
+  </div>
+
+</div>
+ 
