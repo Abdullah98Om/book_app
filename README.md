@@ -21,10 +21,9 @@
 - **Flutter** (UI Framework)
 - **Bloc/Cubit** (State Management)
 - **SQLite** (لتخزين عمليات البحث)
-- **Dio / HTTP** (لجلب البيانات من الـ API)
+- **HTTP** (لجلب البيانات من الـ API)
 - **GetIt** (Dependency Injection)
-- **ScreenUtil** (لتصميم واجهة متجاوبة)
-- **Flutter Bloc** (لإدارة الحالة بشكل منظم)
+- **ScreenUtil** (لتصميم واجهة متجاوبة) 
 
 ---
 
