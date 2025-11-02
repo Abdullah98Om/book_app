@@ -1,11 +1,7 @@
-import 'package:animate_do/animate_do.dart';
+import 'package:book_app/view/categories/widgets/books_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../controller/books/cubit/books_cubit.dart';
-import '../../../core/theme/app_color.dart';
-import '../../../core/widgets/my_network_image.dart';
 
 class BooksPartWidget extends StatelessWidget {
   const BooksPartWidget({super.key});
@@ -25,70 +21,7 @@ class BooksPartWidget extends StatelessWidget {
             if (books.isEmpty) {
               return const Center(child: Text("لا توجد كتب لهذه الفئة"));
             }
-            return GridView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 12.h,
-                crossAxisSpacing: 12.w,
-                childAspectRatio: 0.7,
-              ),
-              itemCount: books.length,
-              itemBuilder: (context, index) {
-                final book = books[index];
-                return FadeInUp(
-                  duration: const Duration(milliseconds: 900),
-                  delay: Duration(milliseconds: (index * 150) % 1000),
-                  // from: (index * 70) + 70,
-                  child: Container(
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 160.h,
-                          width: 160.h,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16.r)),
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(16.r),
-                              child: MyNetworkImage(
-                                url: book.image,
-                                fit: BoxFit.cover,
-                              )),
-                        ),
-                        SizedBox(height: 8.h),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            book.title,
-                            maxLines: 1,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                color: AppColor.primaryColor,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16.sp),
-                          ),
-                        ),
-                        SizedBox(height: 8.h),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "\$${book.price}",
-                            maxLines: 1,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                color: AppColor.secondryColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14.sp),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ); //BookCard(book: book);
-              },
-            );
+            return BooksWidget(books: books);
           }
           return const SizedBox();
         },

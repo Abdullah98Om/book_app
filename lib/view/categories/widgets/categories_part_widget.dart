@@ -1,10 +1,9 @@
-import 'package:animate_do/animate_do.dart';
+import 'package:book_app/core/util/app_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../controller/books/cubit/books_cubit.dart';
-import '../../../core/theme/app_color.dart';
+import 'list_categories_widget.dart';
 
 class CategoriesPartWidget extends StatelessWidget {
   const CategoriesPartWidget({super.key});
@@ -21,48 +20,13 @@ class CategoriesPartWidget extends StatelessWidget {
           builder: (context, state) {
             final cubit = context.read<BooksCubit>();
             final categories = cubit.allCategories;
-            if (categories.isEmpty) return const SizedBox();
+            if (categories.isEmpty) {
+              AppToast.show(message: "Not Found Categories.");
+              return const SizedBox();
+            }
+
             return categories.length > 1
-                ? ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: categories.length,
-                    itemBuilder: (context, index) {
-                      final category = categories[index];
-                      final isSelected = cubit.selectedCategory == category.id;
-                      return GestureDetector(
-                        onTap: () {
-                          cubit.selectCategory(
-                              category.id); // Cubit يقوم بالفلترة
-                        },
-                        child: FadeInRight(
-                          from: (index * 70) + 70,
-                          child: Container(
-                            alignment: Alignment.bottomCenter,
-                            margin: EdgeInsets.only(right: 20.w),
-                            decoration: BoxDecoration(
-                                border: isSelected
-                                    ? const Border(
-                                        bottom: BorderSide(
-                                            width: 2,
-                                            color: AppColor.secondryColor))
-                                    : null),
-                            child: Text(
-                              category.name,
-                              style: TextStyle(
-                                color: isSelected
-                                    ? AppColor.primaryColor
-                                    : AppColor.greyColor,
-                                fontSize: isSelected ? 18.sp : 16.sp,
-                                fontWeight: isSelected
-                                    ? FontWeight.w700
-                                    : FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  )
+                ? ListCategoriesWidget(categories: categories, cubit: cubit)
                 : const SizedBox.shrink();
           },
         ),

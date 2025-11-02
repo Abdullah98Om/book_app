@@ -67,32 +67,4 @@ class BooksCubit extends Cubit<BooksState> {
     }
     emit(BooksLoadedState(currentState.books, displayedBooks));
   }
-
-// search in books
-  void searchBooks(String query) {
-    // if (query.isEmpty) {
-    //   return;
-    //   // filterByCategory(selectedCategoryId);
-    // } else {
-    //   displayedBooks = allBooks.where((book) {
-    //     final matchesQuery =
-    //         book.title.toLowerCase().contains(query.toLowerCase()) ||
-    //             book.author.toLowerCase().contains(query.toLowerCase());
-
-    //     return matchesQuery;
-    //   }).toList();
-
-    //   _addRecentSearch(query);
-    //   emit(BooksLoadedState(displayedBooks));
-    // }
-  }
-
-  void _addRecentSearch(String query) {
-    if (query.isEmpty) return;
-    recentSearches.remove(query);
-    recentSearches.insert(0, query);
-    if (recentSearches.length > 10) {
-      recentSearches = recentSearches.sublist(0, 10);
-    }
-  }
 }

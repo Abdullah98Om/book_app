@@ -15,10 +15,9 @@ class SqlDb {
   }
 
   initalDb() async {
-    String databasePath = await getDatabasesPath(); // مكان قاعدة البيانات
+    String databasePath = await getDatabasesPath();
 
-    String path = join(databasePath,
-        "book_app.db"); // دمج اسم القاعدة مع الموقع للحصول على مسار كامل
+    String path = join(databasePath, "book_app.db");
 
     Database mydb = await openDatabase(path,
         onCreate: _onCreate, version: 1, onUpgrade: _onUpgrade);
@@ -26,13 +25,11 @@ class SqlDb {
     return mydb;
   }
 
-  //  يتم استدعائها مره واحدة فقط وظيفتها انشاء الجداول لقاعدة البيانات
   _onCreate(Database db, int version) async {
     await db.execute(
         'CREATE TABLE search (id INTEGER  NOT NULL  PRIMARY KEY AUTOINCREMENT, query TEXT NOT NULL ,  createdAt TEXT NOT NULL )');
   }
 
-// يتم استدعائها في كل مره تغير فيها رقم version الغرض منها هو لتحديث قاعدة البيانات مثلا اضافة جدول جديد او حذف جدول
   _onUpgrade(Database db, int oldversion, int newversion) {}
 
 // Select

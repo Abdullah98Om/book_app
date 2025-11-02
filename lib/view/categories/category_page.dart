@@ -12,7 +12,7 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<BooksCubit>(), // أو BooksCubit(BooksServices())
+      create: (_) => getIt<BooksCubit>(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
