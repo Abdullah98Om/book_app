@@ -33,7 +33,7 @@
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
 
   <div>
-    
+    <p>الواجهات</p>
     <img src="screenshots/4.png" alt="الرئيسية" width="200"/>
     <img src="screenshots/2.png" alt="الفئات" width="200"/>
     <img src="screenshots/1.png" alt="البحث" width="200"/>
