@@ -34,9 +34,9 @@
 
   <div>
     <p>الواجهات</p>
-    <img src="screenshots/4.png" alt="الرئيسية" width="200"/>
-    <img src="screenshots/2.png" alt="الفئات" width="200"/>
-    <img src="screenshots/1.png" alt="البحث" width="200"/>
+    <img src="screenshots/4.png" alt="الرئيسية" width="250"/>
+    <img src="screenshots/2.png" alt="الفئات" width="250"/>
+    <img src="screenshots/1.png" alt="البحث" width="250"/>
   </div>
  
 
