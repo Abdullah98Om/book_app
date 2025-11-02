@@ -33,19 +33,14 @@
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
 
   <div>
-    <p>الفئات</p>
+    
     <img src="screenshots/4.png" alt="الرئيسية" width="200"/>
-  </div>
-
-  <div>
-    <p>البحث</p>
     <img src="screenshots/2.png" alt="الفئات" width="200"/>
-  </div>
-
-  <div>
-    <p>سجل البث</p>
     <img src="screenshots/1.png" alt="البحث" width="200"/>
   </div>
+ 
+
+ 
 
 </div>
  
